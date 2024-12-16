@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8vcjh1x1x0yv"]
+
+[ext_resource type="Texture2D" uid="uid://b7obeg2eu6cwk" path="res://Assets/png/MC/attack/Bow/arrow.png" id="1_lod25"]
+[ext_resource type="Script" path="res://arrow.gd" id="2_e4o3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8dv2"]
+size = Vector2(7.5, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inehp"]
+size = Vector2(8, 2)
+
+[node name="arrow" type="CharacterBody2D" node_paths=PackedStringArray("timer")]
+z_index = 4096
+position = Vector2(617, 415)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_e4o3u")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4096
+texture = ExtResource("1_lod25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_w8dv2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="attack_area" type="Area2D" parent="." groups=["Attack_area"]]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_inehp")
+debug_color = Color(0.936125, 0, 0.164844, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(7, 0)
+target_position = Vector2(9, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfgl51m1mtqd"]
+
+[ext_resource type="Script" path="res://Scenes/equipment_banner.gd" id="1_1oh6s"]
+[ext_resource type="Texture2D" uid="uid://c36cukqn8gnma" path="res://Assets/UI/Weapon_Banner/weapon_magic_banner_ui.png" id="1_b0rmi"]
+
+[node name="magic_equipment_banner" type="Node2D"]
+script = ExtResource("1_1oh6s")
+
+[node name="sword_sprt" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-0.699837, 0.964165)
+rotation = 3.14159
+scale = Vector2(1.50809, 1.36193)
+
+[node name="banner" type="Sprite2D" parent="."]
+position = Vector2(1.30016, 19.9642)
+scale = Vector2(2.25938, 2.21763)
+texture = ExtResource("1_b0rmi")
+region_enabled = true
+region_rect = Rect2(0, 0, 64.5526, 64)
+
+[node name="attack_label" type="Label" parent="."]
+offset_left = -40.6998
+offset_top = 34.9642
+offset_right = 0.300163
+offset_bottom = 46.9642
+theme_override_font_sizes/font_size = 8
+text = "Att"
+
+[node name="crit_label" type="Label" parent="."]
+offset_left = -41.6998
+offset_top = 47.9642
+offset_right = -0.699837
+offset_bottom = 59.9642
+theme_override_font_sizes/font_size = 8
+text = "crit"
+
+[node name="passive_label" type="Label" parent="."]
+offset_left = -41.6998
+offset_top = 58.9642
+offset_right = -0.699837
+offset_bottom = 70.9642
+theme_override_font_sizes/font_size = 8
+text = "Passive"

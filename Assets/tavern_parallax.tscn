@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk38bpp72okrw"]
+
+[ext_resource type="Texture2D" uid="uid://cqgvwg2x4l6bc" path="res://Assets/png/Tilemap/lantern_4.png" id="1_can7e"]
+[ext_resource type="Texture2D" uid="uid://tfyochvfdetd" path="res://Assets/png/Tilemap/lantern_3.png" id="2_hluwk"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = 50
+follow_viewport_enabled = true
+
+[node name="Layer 1" type="ParallaxLayer" parent="."]
+z_index = 100
+motion_scale = Vector2(0.2, 0.2)
+motion_offset = Vector2(200, 0)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(987, 43)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(719, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(119, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(2325, 47)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(1559, 48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(1259, 31)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Layer 1"]
+z_index = 85
+position = Vector2(-475, 26)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_can7e")
+
+[node name="Layer 2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_offset = Vector2(100, 0)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(799, 80)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(547, 55)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(247, 66)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(42, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(1525, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(1213, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(2290, 65)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hluwk")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Layer 2"]
+z_index = 100
+position = Vector2(-561, 49)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_hluwk")

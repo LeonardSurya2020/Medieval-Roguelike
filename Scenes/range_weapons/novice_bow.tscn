@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://ic3kdw4xyv4i"]
+
+[ext_resource type="Texture2D" uid="uid://b15x70awssyeq" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon1_no_effect.png" id="1_3v3mm"]
+[ext_resource type="Script" path="res://Scripts/pick_up_weapon_function.gd" id="1_s8ssl"]
+[ext_resource type="PackedScene" uid="uid://dqxofntevef7m" path="res://Scenes/range_equipment_banner.tscn" id="3_7sm3k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7bj7"]
+size = Vector2(28, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggglp"]
+radius = 30.2324
+
+[node name="novice_bow" type="RigidBody2D" node_paths=PackedStringArray("sword_icon", "banner")]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_s8ssl")
+sword_icon = NodePath("sword_sprt")
+banner = NodePath("range_equipment_banner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 10)
+shape = SubResource("RectangleShape2D_d7bj7")
+
+[node name="sword_sprt" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3v3mm")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 10)
+shape = SubResource("RectangleShape2D_d7bj7")
+
+[node name="drop_area_2d" type="Area2D" parent="." groups=["weapon_instance_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drop_area_2d"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_ggglp")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 27)
+
+[node name="range_equipment_banner" parent="." instance=ExtResource("3_7sm3k")]
+visible = false
+z_index = 150
+position = Vector2(0, -109)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="drop_area_2d" to="." method="_on_drop_area_2d_area_entered"]
+[connection signal="body_entered" from="drop_area_2d" to="." method="_on_drop_area_2d_body_entered"]

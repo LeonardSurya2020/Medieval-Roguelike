@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdt0evhmy4meg"]
+
+[ext_resource type="Script" path="res://Scenes/magic_weapons/fire_ball.gd" id="1_86p4r"]
+[ext_resource type="Texture2D" uid="uid://0agi7f8ms52r" path="res://Assets/png/MC/attack/Magic/fire_ball-Sheet.png" id="1_i0pmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klqrp"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uqb0"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwncp"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5u2f"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgi1d"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45d8h"]
+atlas = ExtResource("1_i0pmd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qix0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klqrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uqb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwncp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5u2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgi1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45d8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vo4g"]
+size = Vector2(5, 6)
+
+[node name="fireBall" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_86p4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qix0h")
+autoplay = "default"
+frame_progress = 0.891571
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(27.5, -1)
+shape = SubResource("RectangleShape2D_0vo4g")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(11, -1)
+scale = Vector2(1.2, 1.2)
+target_position = Vector2(17.5, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

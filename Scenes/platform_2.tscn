@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://rsqp522l6cwn"]
+
+[ext_resource type="Texture2D" uid="uid://cl2rf8rv76ft5" path="res://Assets/png/Tilemap/biome 1 - 1tilemaps/biome_platform.png" id="1_gtf87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grb5e"]
+size = Vector2(64, 14)
+
+[node name="platform_2" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_grb5e")
+one_way_collision = true
+
+[node name="BiomePlatform" type="Sprite2D" parent="."]
+texture = ExtResource("1_gtf87")
+region_enabled = true
+region_rect = Rect2(63.6995, 343.747, 64.5925, 14.9555)

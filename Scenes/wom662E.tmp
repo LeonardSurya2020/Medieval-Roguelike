@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=3 uid="uid://f1gv6g63ncmf"]
+
+[ext_resource type="Texture2D" uid="uid://di8bunj1rvgnx" path="res://Assets/png/NPC/woman_warrior/NPC_woman_1_sheet.png" id="1_753pe"]
+[ext_resource type="Script" path="res://Scenes/Npc_interact.gd" id="1_d1ln4"]
+[ext_resource type="Texture2D" uid="uid://cj7fmal8aeokl" path="res://Assets/buttons/e_button.png" id="2_67si2"]
+[ext_resource type="Texture2D" uid="uid://bwqbm7hnbseru" path="res://Assets/bubble_text/bubbleText.png" id="4_lq7tj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkib"]
+atlas = ExtResource("1_753pe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl5cw"]
+atlas = ExtResource("1_753pe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4twy"]
+atlas = ExtResource("1_753pe")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0mf1"]
+atlas = ExtResource("1_753pe")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xioc4"]
+atlas = ExtResource("1_753pe")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r00oj"]
+atlas = ExtResource("1_753pe")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_antpa"]
+atlas = ExtResource("1_753pe")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73sln"]
+atlas = ExtResource("1_753pe")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0hc"]
+atlas = ExtResource("1_753pe")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok7ny"]
+atlas = ExtResource("1_753pe")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wh7g"]
+atlas = ExtResource("1_753pe")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgb1l"]
+atlas = ExtResource("1_753pe")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxa8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl5cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4twy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0mf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xioc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_antpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73sln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn0hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok7ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wh7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgb1l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25s0l"]
+size = Vector2(20, 59)
+
+[node name="Woman_warrior" type="Area2D"]
+script = ExtResource("1_d1ln4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_gxa8o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.356335
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_25s0l")
+
+[node name="EButton" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(-21, -39)
+texture = ExtResource("2_67si2")
+
+[node name="Label" type="Label" parent="EButton"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = -7.0
+offset_right = 74.0
+offset_bottom = 17.0
+scale = Vector2(0.700112, 0.513574)
+theme_override_font_sizes/font_size = 17
+text = "Interact"
+metadata/_edit_use_anchors_ = true
+
+[node name="BubbleText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(48, -44)
+texture = ExtResource("4_lq7tj")
+
+[node name="bubbleTextLabel" type="Label" parent="BubbleText"]
+texture_filter = 1
+offset_left = -35.0
+offset_top = -16.0
+offset_right = 33.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 10
+text = "so, you're the choosen one?"
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

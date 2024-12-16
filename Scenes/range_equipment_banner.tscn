@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqxofntevef7m"]
+
+[ext_resource type="Script" path="res://Scenes/equipment_banner.gd" id="1_wsujj"]
+[ext_resource type="Texture2D" uid="uid://dc27aw4wrxxy6" path="res://Assets/UI/Weapon_Banner/weapon_range_hover_ui.png" id="2_2qjqa"]
+
+[node name="range_equipment_banner" type="Node2D"]
+script = ExtResource("1_wsujj")
+
+[node name="sword_sprt" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-2, -19)
+rotation = 3.14159
+scale = Vector2(1.50809, 1.36193)
+
+[node name="banner" type="Sprite2D" parent="."]
+scale = Vector2(2.25938, 2.21763)
+texture = ExtResource("2_2qjqa")
+region_enabled = true
+region_rect = Rect2(0, 0, 64.5526, 64)
+
+[node name="attack_label" type="Label" parent="."]
+offset_left = -42.0
+offset_top = 15.0
+offset_right = -1.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 8
+text = "Att"
+
+[node name="crit_label" type="Label" parent="."]
+offset_left = -43.0
+offset_top = 28.0
+offset_right = -2.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 8
+text = "crit"
+
+[node name="passive_label" type="Label" parent="."]
+offset_left = -43.0
+offset_top = 39.0
+offset_right = -2.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 8
+text = "Passive"

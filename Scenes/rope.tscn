@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://g77brt7a6oey"]
+
+[ext_resource type="Script" path="res://Scripts/rope.gd" id="1_alge2"]
+[ext_resource type="Texture2D" uid="uid://cl2rf8rv76ft5" path="res://Assets/png/Tilemap/biome 1 - 1tilemaps/biome_platform.png" id="1_k4wys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dik61"]
+size = Vector2(12, 186)
+
+[node name="rope" type="Area2D"]
+script = ExtResource("1_alge2")
+
+[node name="BiomePlatform" type="Sprite2D" parent="."]
+texture = ExtResource("1_k4wys")
+region_enabled = true
+region_rect = Rect2(217.794, 382.867, 8.42659, 188.265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dik61")
+debug_color = Color(1.27546e-06, 0.648802, 0.168283, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://wrqj7qb4ed16"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2(-3, -1)
+amount = 50
+speed_scale = 0.15
+fixed_fps = 120
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1)
+gravity = Vector2(0, -100)
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(0.156863, 0.0980392, 0.0313726, 0.121569)

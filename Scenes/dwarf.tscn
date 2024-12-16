@@ -1,0 +1,122 @@
+[gd_scene load_steps=15 format=3 uid="uid://ytntl8o1edl8"]
+
+[ext_resource type="Script" path="res://Scripts/Npc_interact.gd" id="1_0ueyp"]
+[ext_resource type="Texture2D" uid="uid://btes5anasypk8" path="res://Assets/png/dwarf_sheet.png" id="1_qocs4"]
+[ext_resource type="Texture2D" uid="uid://cj7fmal8aeokl" path="res://Assets/buttons/e_button.png" id="2_0oq8y"]
+[ext_resource type="Texture2D" uid="uid://bwqbm7hnbseru" path="res://Assets/bubble_text/bubbleText.png" id="3_72gd7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emcfg"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdqp4"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex0d2"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyjqw"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygaah"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lspv7"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hmtp"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip48h"]
+atlas = ExtResource("1_qocs4")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sk55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emcfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdqp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex0d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyjqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygaah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lspv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hmtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip48h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u37e"]
+size = Vector2(23, 53)
+
+[node name="Dwarf" type="Area2D"]
+script = ExtResource("1_0ueyp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7sk55")
+autoplay = "default"
+frame_progress = 0.619268
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 5.5)
+shape = SubResource("RectangleShape2D_0u37e")
+
+[node name="EButton" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(-21, -39)
+texture = ExtResource("2_0oq8y")
+
+[node name="Label" type="Label" parent="EButton"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = -7.0
+offset_right = 74.0
+offset_bottom = 17.0
+scale = Vector2(0.700112, 0.513574)
+theme_override_font_sizes/font_size = 17
+text = "Interact"
+metadata/_edit_use_anchors_ = true
+
+[node name="BubbleText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(48, -44)
+texture = ExtResource("3_72gd7")
+
+[node name="bubbleTextLabel" type="Label" parent="BubbleText"]
+texture_filter = 1
+offset_left = -35.0
+offset_top = -16.0
+offset_right = 33.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 10
+text = "so, you're the choosen one?"
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_dwarf_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,153 @@
+[gd_scene load_steps=19 format=3 uid="uid://v650qstn53ku"]
+
+[ext_resource type="Texture2D" uid="uid://b5sk7d1dwuymb" path="res://Assets/png/NPC/Witch/witch_sheet.png" id="1_0rs24"]
+[ext_resource type="Script" path="res://Scripts/Npc_interact.gd" id="1_2tbka"]
+[ext_resource type="Texture2D" uid="uid://cj7fmal8aeokl" path="res://Assets/buttons/e_button.png" id="3_cuuqh"]
+[ext_resource type="Texture2D" uid="uid://bwqbm7hnbseru" path="res://Assets/bubble_text/bubbleText.png" id="4_ctji4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0u3v"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvjp2"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx68q"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33djr"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lq5j"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(256, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vle0m"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(320, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yutwp"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(384, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2jp4"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(448, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdfla"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(512, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5w3p"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(576, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqjy"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(640, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn1nb"]
+atlas = ExtResource("1_0rs24")
+region = Rect2(704, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_petjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0u3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvjp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx68q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33djr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lq5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vle0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yutwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2jp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdfla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5w3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn1nb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_020a4"]
+size = Vector2(35, 69)
+
+[node name="Witch" type="Area2D"]
+script = ExtResource("1_2tbka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -31)
+sprite_frames = SubResource("SpriteFrames_petjf")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.448018
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_020a4")
+
+[node name="EButton" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(-21, -39)
+texture = ExtResource("3_cuuqh")
+
+[node name="Label" type="Label" parent="EButton"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = -7.0
+offset_right = 74.0
+offset_bottom = 17.0
+scale = Vector2(0.700112, 0.513574)
+theme_override_font_sizes/font_size = 17
+text = "Interact"
+metadata/_edit_use_anchors_ = true
+
+[node name="BubbleText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(48, -44)
+texture = ExtResource("4_ctji4")
+
+[node name="bubbleTextLabel" type="Label" parent="BubbleText"]
+texture_filter = 1
+offset_left = -35.0
+offset_top = -16.0
+offset_right = 33.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_font_sizes/font_size = 10
+text = "so, you're the choosen one?"
+autowrap_mode = 3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

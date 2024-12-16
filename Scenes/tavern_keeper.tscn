@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnlygttuxe35"]
+
+[ext_resource type="Texture2D" uid="uid://dqwgyuq5qt1nq" path="res://Assets/png/NPC/Tavern Keeper/Tavern_keeper_idle.png" id="1_rqpxa"]
+[ext_resource type="Script" path="res://Scripts/tavern_keeper.gd" id="1_slrp5"]
+[ext_resource type="Texture2D" uid="uid://cj7fmal8aeokl" path="res://Assets/buttons/e_button.png" id="3_yhgd6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_883a4"]
+size = Vector2(23, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpclw"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qih2u"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di6fe"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yyqb"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb3sg"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72es2"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1gnu"]
+atlas = ExtResource("1_rqpxa")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v3ql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpclw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qih2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di6fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yyqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb3sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72es2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1gnu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="TavernKeeper" type="Area2D"]
+script = ExtResource("1_slrp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_883a4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_7v3ql")
+autoplay = "default"
+frame_progress = 0.282512
+
+[node name="EButton" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(-21, -39)
+texture = ExtResource("3_yhgd6")
+
+[node name="Label" type="Label" parent="EButton"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = -7.0
+offset_right = 74.0
+offset_bottom = 17.0
+scale = Vector2(0.700112, 0.513574)
+theme_override_font_sizes/font_size = 17
+text = "Interact"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
